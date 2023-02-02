@@ -1,34 +1,43 @@
 ﻿using NHLSystemClassLibrary;
+using System.Text.Json;
+
 namespace NHLConsoleApp
 {
     internal class Program
     {
+        const string jsonFilePath = @"..\..\..\team.json";
         static void Main(string[] args)
         {
-            ////Prompt and read in the team name
-            ////Console.Write("Enter the team name: ");
-            ////string teamName = Console.ReadLine();
-            //try
-            //{
-            //    Team oilers = new Team("Oilers", "Edmonton", "Rogers Place", Conference.Western, Division.Pacific);
-            //    Console.WriteLine($"Team Name: {oilers.Name}\n" +
-            //        $"Team City: {oilers.City}\n" +
-            //        $"Team Arena: {oilers.Arena}");
-            //}
-            //catch (ArgumentNullException ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
-            //catch (ArgumentException ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
-            //catch
-            //{
-            //    Console.WriteLine("Incorrect exception thrown.");
-            //}
-            Team team = ReadPlayerDataFromCSV();
-            PrintTeamInfo(team);
+            static void ConsolAppOne()
+            {
+                //Prompt and read in the team name
+                //Console.Write("Enter the team name: ");
+                //string teamName = Console.ReadLine();
+                try
+                {
+                    Team oilers = new Team("Oilers", "Edmonton", "Rogers Place", Conference.Western, Division.Pacific);
+                    Console.WriteLine($"Team Name: {oilers.Name}\n" +
+                        $"Team City: {oilers.City}\n" +
+                        $"Team Arena: {oilers.Arena}");
+                }
+                catch (ArgumentNullException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch
+                {
+                    Console.WriteLine("Incorrect exception thrown.");
+                }
+            }
+            //Team team = ReadPlayerDataFromCSV();
+            //PrintTeamInfo(team);
+            //WriteTeamInfoToJsonFile(team, jsonFilePath);
+            Team currentTeam = ReadTeamFromJsonFile();
+            PrintTeamInfo(currentTeam);
 
             static void LinQMethods()
             {
@@ -127,10 +136,47 @@ namespace NHLConsoleApp
             {
                 //Display the team info and all the players in the team (name, city, arena, confernce, division, players)
                 Console.WriteLine($"{newTeam.Name},{newTeam.City},{newTeam.Arena},{newTeam.Division}");
-                foreach(var currentPlayer in newTeam.Players)
+                foreach (var currentPlayer in newTeam.Players)
                 {
                     Console.WriteLine(currentPlayer.ToString());
                 }
+            }
+            static void WriteTeamInfoToJsonFile(Team currentTeam, string jsonFilePath)
+            {
+                try
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        WriteIndented = true,
+                        IncludeFields = true,
+                    };
+                    string jsonString = JsonSerializer.Serialize<Team>(currentTeam, options);
+                    File.WriteAllText(jsonFilePath, jsonString);
+                    Console.WriteLine("Write to JSON file was successful.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error serializing to JSON file with exception: {ex.Message}");
+                }
+            }
+            static Team ReadTeamFromJsonFile()
+            {
+                Team currentTeam = null;
+                try
+                {
+                    string jsonString = File.ReadAllText(jsonFilePath);
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        WriteIndented = true,
+                        IncludeFields = true,
+                    };
+                    currentTeam = JsonSerializer.Deserialize<Team>(jsonString, options);
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine($"Error deserialize JSON file with exception {ex.Message}");
+                }
+                return currentTeam;
             }
         }
     }

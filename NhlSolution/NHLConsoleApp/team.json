@@ -1,0 +1,54 @@
+{
+  "Name": "NewBestTeam",
+  "City": "Toronto",
+  "Arena": "Rogers Arena",
+  "Conference": 1,
+  "Division": 1,
+  "Players": [
+    {
+      "PlayerNumber": 18,
+      "PlayerName": "Zach Hyman",
+      "GamesPlayed": 2,
+      "Goals": 2,
+      "Assists": 1,
+      "Points": 3,
+      "Position": 2
+    },
+    {
+      "PlayerNumber": 25,
+      "PlayerName": "Darnell Nurse",
+      "GamesPlayed": 3,
+      "Goals": 0,
+      "Assists": 1,
+      "Points": 1,
+      "Position": 3
+    },
+    {
+      "PlayerNumber": 15,
+      "PlayerName": "Alexander Kerfoot",
+      "GamesPlayed": 2,
+      "Goals": 4,
+      "Assists": 2,
+      "Points": 6,
+      "Position": 0
+    },
+    {
+      "PlayerNumber": 20,
+      "PlayerName": "Dryden Hunt",
+      "GamesPlayed": 4,
+      "Goals": 3,
+      "Assists": 1,
+      "Points": 4,
+      "Position": 1
+    },
+    {
+      "PlayerNumber": 34,
+      "PlayerName": "Jake Allen",
+      "GamesPlayed": 6,
+      "Goals": 1,
+      "Assists": 0,
+      "Points": 1,
+      "Position": 4
+    }
+  ]
+}

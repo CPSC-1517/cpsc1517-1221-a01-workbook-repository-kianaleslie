@@ -38,6 +38,10 @@ namespace NHLSystemClassLibrary
             Goals = goals;
             Assists = assists;
         }
+        public Player()
+        {
+
+        }
         //methods
         public void AddGamesPlayed()
         {
