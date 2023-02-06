@@ -33,11 +33,11 @@ namespace NHLConsoleApp
                     Console.WriteLine("Incorrect exception thrown.");
                 }
             }
-            //Team team = ReadPlayerDataFromCSV();
-            //PrintTeamInfo(team);
-            //WriteTeamInfoToJsonFile(team, jsonFilePath);
-            Team currentTeam = ReadTeamFromJsonFile();
-            PrintTeamInfo(currentTeam);
+            Team team = ReadPlayerDataFromCSV();
+            PrintTeamInfo(team);
+            WriteTeamInfoToJsonFile(team, jsonFilePath);
+            //Team currentTeam = ReadTeamFromJsonFile();
+            //PrintTeamInfo(currentTeam);
 
             static void LinQMethods()
             {
