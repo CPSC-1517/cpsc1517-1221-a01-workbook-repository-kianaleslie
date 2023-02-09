@@ -21,12 +21,32 @@
 <form method="post">
     <div class="mb-3">
         <label for="username" class="form-label">Your name:</label>
-        <input type="text" class="form-control" id="username" 
-        name="Username"  value="@Model.Username" placeholder="enter your name here">
+        <input type="text" class="form-control" id="username"
+               name="Username" value="@Model.Username" placeholder="enter your name here">
     </div>
-    <!--
-        ToDo: add form fields for a number and a date field
-        ToDo: add form field for a select field (aka drop down list)
-    -->
-    <button type="submit" class="btn btn-outline-primary">Click Here</button>
+    <!-- ToDo: add form fields for a number field -->
+    <div class="mb-3">
+        <label for="age" class="form-label">Your age:</label>
+        <input type="number" min="18" max="75" class="form-control" id="age"
+               name="Age" value="@Model.Age" placeholder="enter your age here">
+    </div>
+    <!-- ToDo: add form field for a select field (aka drop down list) -->
+    <select class="form-select" aria-label="Select your stream"
+    name="DMITStream" value="@Model.DMITStream">
+        <option selected>Open this select menu</option>
+        <option value="Game Programming">Game Programming</option>
+        <option value="Game Design">Game Design</option>
+        <option value="Animation">Animation</option>
+        <option value="Digital Cinema">Digital Cinema</option>
+        <option value="Web Design and Development">Web Design and Development</option>
+        <option value="IT Buisness Analyst">IT Buisness Analyst</option>
+        <option value="Computer Software Development">Computer Software Development</option>
+    </select>
+    <!-- ToDo: add form field for a radio field for Gender (Male, Female, Other)-->
+    <!-- ToDo: add form field for a textarea field for list of friends-->
+    <!-- ToDo: add form field for a checkbox field for subscribe to spam-->
+    <!-- ToDo: add form field for a date field fro Date of Birth-->
+    <!-- ToDo: add form field for a range field for mood (0 - 100)-->
+    <!-- ToDo: add form field for a email field -->
+    <button type="submit" class="btn btn-outline-success">Say Hello :)</button>
 </form>

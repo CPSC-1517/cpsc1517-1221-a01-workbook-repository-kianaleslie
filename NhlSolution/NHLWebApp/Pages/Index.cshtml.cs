@@ -16,6 +16,10 @@ namespace NHLWebApp.Pages
         public string Username { get; set; }
         //Define an auto implemented property for feedback messages
         public string? InfoMessage { get; private set; }
+        [BindProperty]
+        public int? Age { get; set; }
+        [BindProperty]
+        public string? DMITStream { get; set; }
         public void OnPost()
         {
             //Generate a lucky number between 1 and 50 (inlcusive)
@@ -24,7 +28,9 @@ namespace NHLWebApp.Pages
            
             var rand = new Random();
             var luckyNumber = rand.Next(1, 51);
-            InfoMessage = $"Hello {Username}. Your lucky number is {luckyNumber}!";
+            InfoMessage = $"Hello, {Username} :)! Your lucky number is {luckyNumber}!";
+            InfoMessage += $"You are {Age} years old.";
+            InfoMessage += $"You are in {DMITStream} at NAIT.";
         }
         public void OnGet()
         {
