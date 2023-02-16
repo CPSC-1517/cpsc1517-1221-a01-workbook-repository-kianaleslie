@@ -3,8 +3,33 @@
 @{
 }
 <h1 style="background-color:black; color:white">Six-Sided Dice Roll Simulator</h1>
-<img src="@Model.DiceFaceImage" alt="Dice Image" width="200px" height="200px"/>
+<img src="@Model.DiceFaceImage" alt="Dice Image" width="200px" height="200px" />
+
+
+@if (Model.InfoMessage != null)
+{
+    <div class="alert alert-info">
+        @Model.InfoMessage
+    </div>
+}
 
 <form method="post">
+    <div>
+       @* <label for="BetAmount">Bet Amount</label>
+        <input type="number" min="1" max="5000" id="BetAmount" name="BetAmount" value="@Model.BetAmount" />*@
+        <label asp-for="BetAmount">Bet Amount</label>
+        <input asp-for="BetAmount" min="1" max="5000"/>
+    </div>
+    <div>
+        <label for="SelectedDiceSide">Selected Dice Side</label>
+        <select class="form-select" id="SelectedDiceSide" name="SelectedDiceSide">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+        </select>
+    </div>
     <button type="submit" class="btn btn-outline-dark">Roll Dice</button>
 </form>

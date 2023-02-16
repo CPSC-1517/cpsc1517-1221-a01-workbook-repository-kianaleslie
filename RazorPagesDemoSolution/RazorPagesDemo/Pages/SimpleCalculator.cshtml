@@ -1,0 +1,46 @@
+﻿@page
+@model RazorPagesDemo.Pages.SimpleCalculatorModel
+@{
+}
+<h1 style="color:deepskyblue">Simple Calculator</h1>
+
+@if (Model.InfoMessage != null)
+{
+    <div class="alert alert-info">
+        @Model.InfoMessage
+    </div>
+}
+
+@if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col">
+            <label asp-for="Calculator.NumberOne">Number One</label>
+            <input asp-for="Calculator.NumberOne">
+        </div>
+        <div class="col">
+            <label asp-for="Calculator.NumberTwo">Number Two</label>
+            <input asp-for="Calculator.NumberTwo">
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-outline-info" asp-page-handler="Add">+</button>
+           </div>
+            <div class="col">
+                <button type="submit" class="btn btn-outline-info" asp-page-handler="Subtract">-</button>
+           </div>
+            <div class="col">
+                <button type="submit" class="btn btn-outline-info" asp-page-handler="Multiply">x</button>
+           </div>
+            <div class="col">
+                <button type="submit" class="btn btn-outline-info" asp-page-handler="Divide">/</button>
+           </div>
+        </div>
+    </div>
+</form>
