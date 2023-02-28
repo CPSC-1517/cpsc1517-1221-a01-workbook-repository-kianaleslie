@@ -8,7 +8,7 @@ namespace NHLConsoleApp
         const string jsonFilePath = @"..\..\..\team.json";
         static void Main(string[] args)
         {
-            static void ConsolAppOne()
+            static void ConsoleAppOne()
             {
                 //Prompt and read in the team name
                 //Console.Write("Enter the team name: ");
