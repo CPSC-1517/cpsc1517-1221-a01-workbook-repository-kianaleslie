@@ -1,0 +1,76 @@
+﻿@page
+@model RazorPagesDemo.Pages.LottoQuickPicksModel
+@{
+    ViewData["Title"] = "Lotto Quick Picks";
+}
+<h1 style="background-color:darkseagreen; color:white">Lotto Quick Picks</h1>
+<p style="background-color:teal; color:white">This is your lucky day!
+    Enter your name, select a lotto type, 
+    and the number of quick picks to generate.
+</p>
+
+@if (Model.InfoMessage != null)
+{
+    <div class="alert alert-info">
+        @Html.Raw(Model.InfoMessage)
+    </div>
+}
+
+@if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @Html.Raw(Model.ErrorMessage)
+    </div>
+}
+
+@{
+    @if (Model.QuickPickNumbers.Count > 0)
+{
+        int counter = 1;
+        foreach(int[] pick in Model.QuickPickNumbers)
+    {
+    <div>Quick Pick Number #@counter</div>
+    <table>
+                    <tbody>
+                         <tr>
+                            @foreach(int num in pick)
+                        {
+                                <td>@num</td>
+                        }
+                         </tr>
+                    </tbody>
+    </table>
+            counter++;
+        }
+}
+}
+<form method="post">
+    <div class="row mb-3">
+        <label asp-for="Name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" asp-for="Name" class="form-control">
+        </div>
+    </div>
+    <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Lotto Types</legend>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <label asp-for="Lotto" class="form-check-label" for="gridRadios1">
+                    Lotto 6/49
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label asp-for="Lotto" class="form-check-label" for="gridRadios2">
+                   Lotto Max
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    <div>
+    <button type="submit" asp-page-handler="GenNums" class="btn btn-outline-success">Generate Numbers</button>
+    <button type="submit" asp-page-handler="Clear" class="btn btn-outline-dark">Cancel</button>
+    </div>
+
+</form>
