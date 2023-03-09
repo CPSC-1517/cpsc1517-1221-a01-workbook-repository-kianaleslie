@@ -1,0 +1,55 @@
+﻿@page
+@model RazorPagesDemo.Pages.ContactMeModel
+@{
+    ViewData["Title"] = "Contact Me";
+}
+<h1 style="background-color:lavender">Contact Me</h1>
+
+@if (Model.InfoMessage != null)
+{
+    <div class="alert alert-info">
+        @Html.Raw(Model.InfoMessage)
+    </div>
+}
+@if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @Html.Raw(Model.ErrorMessage)
+    </div>
+}
+
+<form method="post">
+    <div class="row mb-3">
+        <label asp-for="Name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input asp-for="Name" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+     <label asp-for="Email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" asp-for="Email" class="form-control">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="Comments" class="col-sm-2 col-form-label">Comments</label>
+        <div class="col-sm-10">
+            <textarea asp-for="Comments" rows="5" cols="50" class="form-control"></textarea>
+        </div>
+    </div>
+     <div class="row mb-3">
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input asp-for="Promotions" class="form-check-input" type="checkbox">
+                <label asp-for="Promotions" class="form-check-label">
+                    Subscribe to Mail
+                </label>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button type="submit" asp-page-handler="SendMessage" class="btn btn-outline-success">Send</button>
+        <button type="submit" asp-page-handler="Clear" class="btn btn-outline-dark">Clear</button>
+        <button type="submit" asp-page-handler="Reset" class="btn btn-outline-success">Reset</button>
+    </div>
+</form>
